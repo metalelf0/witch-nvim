@@ -37,6 +37,8 @@ the lualine config (using any theme, e.g. the "auto" one).
 
 - [ ] add a telescope picker
 - [ ] support additional configuration options (italics, integrations etc.)
+- [ ] support more themes
+- [ ] support more status line plugins
 
 # How?
 
