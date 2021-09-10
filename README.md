@@ -1,4 +1,4 @@
-# Witch
+# 🧙 Witch
 
 Witch is a neovim colorscheme switcher. It makes switching colorschemes with
 different variants easy, setting the matching lualine theme on the fly.
