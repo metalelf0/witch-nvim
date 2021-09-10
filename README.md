@@ -33,6 +33,11 @@ the lualine config (using any theme, e.g. the "auto" one).
   - this is required to allow switching lualine themes without losing existing config
 - the supported colorschemes should be installed separately
 
+# Todo
+
+- [ ] add a telescope picker
+- [ ] support additional configuration options (italics, integrations etc.)
+
 # How?
 
 This plugin defines a couple of internal configurations, to decide how to set the colorscheme:
