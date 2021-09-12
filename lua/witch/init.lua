@@ -28,7 +28,7 @@ function Witch.mappings()
     ['tokyonight'] = {
       name = "tokyonight",
       variants = { "night", "storm", "day" },
-      mode = "variable",
+      mode = "global_variable",
       variable = "tokyonight_style"
     }
   }
