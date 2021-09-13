@@ -51,25 +51,25 @@ function Witch.mappings()
       name = "ayu",
       variants = { "mirage", "dark", "light" },
       mode = "global_variable",
-      global_variable = "ayucolor"
+      variable = "ayucolor"
     },
     ['nightfox'] = {
       name = "nightfox",
       variants = { "nightfox", "nordfox", "palefox" },
       mode = "lua_load",
-      theme_variable = "fox"
+      variable = "fox"
     },
     ['github-theme'] = {
       name = "github-theme",
       variants = { "dark", "dimmed", "light" },
       mode = "lua_setup_only",
-      theme_variable = "themeStyle"
+      variable = "themeStyle"
     },
     ['tokyonight'] = {
       name = "tokyonight",
       variants = { "night", "storm", "day" },
       mode = "global_variable",
-      global_variable = "tokyonight_style"
+      variable = "tokyonight_style"
     }
   }
 end
