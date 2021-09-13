@@ -11,25 +11,25 @@ function Witch.mappings()
       name = "ayu",
       variants = { "mirage", "dark", "light" },
       mode = "global_variable",
-      global_variable = "ayucolor"
+      variable = "ayucolor"
     },
     ['nightfox'] = {
       name = "nightfox",
       variants = { "nightfox", "nordfox", "palefox" },
       mode = "lua_load",
-      theme_variable = "fox"
+      variable = "fox"
     },
     ['github-theme'] = {
       name = "github-theme",
       variants = { "dark", "dimmed", "light" },
       mode = "lua_setup_only",
-      theme_variable = "themeStyle"
+      variable = "themeStyle"
     },
     ['tokyonight'] = {
       name = "tokyonight",
       variants = { "night", "storm", "day" },
       mode = "global_variable",
-      global_variable = "tokyonight_style"
+      variable = "tokyonight_style"
     }
   }
 end
@@ -38,7 +38,7 @@ function Witch.LualineMappings()
   return {
     ['ayu'] = {
       mode = "per_variant",
-      variants = { 
+      variants = {
         ["mirage"] = "ayu_mirage",
         ["light"]  = "ayu_light",
         ["dark"]   = "ayu_dark"
@@ -60,6 +60,11 @@ function Witch.LualineMappings()
 end
 
 function Witch.setLualineTheme(theme, variant)
+  local lualineExists, lualine = pcall(require, 'lualine')
+  if not lualineExists then
+    return
+  end
+
   local themeFound = false
   for configuredTheme, _val in pairs(Witch.LualineMappings()) do
     if configuredTheme == theme then
@@ -73,14 +78,15 @@ function Witch.setLualineTheme(theme, variant)
   end
 
   local lualineConfig = Witch.LualineMappings()[theme]
-  
+
+  local lualineTheme
   if (lualineConfig["mode"] == "only_one") then
-    local lualineTheme = lualineConfig["name"]
+    lualineTheme = lualineConfig["name"]
   elseif (lualineConfig["mode"] == "per_variant") then
-    local lualineTheme = lualineConfig["variants"][variant]
+    lualineTheme = lualineConfig["variants"][variant]
   end
 
-  require('lualine').setup { options = { theme = lualineTheme }}
+  lualine.setup { options = { theme = lualineTheme }}
 end
 
 
@@ -116,16 +122,16 @@ function Witch.setColorscheme(theme, variant)
   for i, themeVariant in ipairs(colorDefinition['variants']) do
     if (variant == themeVariant) then
       if (colorDefinition['mode'] == "lua_setup_only") then
-        local themeVariable = colorDefinition['theme_variable']
+        local themeVariable = colorDefinition['variable']
         local loadedTheme = require(theme)
         local options = {}
         options[themeVariable] = variant
         loadedTheme.setup(options)
       elseif (colorDefinition['mode'] == "lua_load") then
-        local themeVariable = colorDefinition['theme_variable']
+        local themeVariable = colorDefinition['variable']
         require(theme).load(variant)
       elseif (colorDefinition['mode'] == "global_variable") then
-        local variableName = colorDefinition["global_variable"]
+        local variableName = colorDefinition["variable"]
         vim.cmd('let ' .. variableName .. ' = "' .. variant .. '"')
         vim.cmd('colorscheme ' .. theme)
       end
