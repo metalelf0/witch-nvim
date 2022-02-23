@@ -29,7 +29,7 @@ the lualine config (using any theme, e.g. the "auto" one).
 # Requirements
 
 - any neovim version supporting lua
-- lualine installed from [shadmansaleh/lualine.nvim](https://github.com/shadmansaleh/lualine.nvim)
+- lualine installed from [shadmansaleh/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
   - this is required to allow switching lualine themes without losing existing config
 - the supported colorschemes should be installed separately
 
